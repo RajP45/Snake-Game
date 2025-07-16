@@ -1,0 +1,180 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    //background-color: #f0f0f0;
+    margin: 0;
+    background-image:url('A.jpg');
+    background-size:cover;
+
+}
+
+.game-container {
+    //background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.game-info {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.game-info p {
+    margin: 5px 0;
+}
+
+#roll-dice-btn {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#roll-dice-btn:hover {
+    background-color: #45a049;
+}
+
+.dice-result {
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+    border: 2px solid #333;
+    width: 500px;
+    height: 500px;
+    margin: 20px auto;
+    position: relative;
+    background-image: url('A1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    font-weight: bold;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2; /* Increased from 1 to appear above background */
+    background-color: transparent; /* Semi-transparent white background */
+    text-shadow: 0 0 3px white, 0 0 3px white;
+    color: #000; /* Ensure text is dark */
+}
+
+
+/* Alternate cell colors for checkerboard effect (optional) */
+.cell:nth-child(even) {
+    //background-color: #f5f5f5;
+}
+
+.player {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.5s ease-in-out; /* Smooth movement */
+
+    z-index: 10; /* Ensure players are above board cells */
+}
+
+.player.user {
+    background-color: #007bff;
+}
+
+.player.bot {
+    background-color: #dc3545;
+}
+
+/* Snakes and Ladders Styling */
+/* These will be marked on specific cells by JS */
+
+.snake {
+    //background: linear-gradient(45deg, #ff0000, #ff8c00, #ffff00, #00ff00); /* Colorful snake */
+    border: 2px dashed #8b0000;
+    //color: white;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute; /* To allow drawing across cells */
+    z-index: 5;
+    pointer-events: none; /* Allow clicks to pass through */
+    opacity: 0.8;
+}
+
+.ladder {
+    //background: linear-gradient(45deg, #007bff, #00c853); /* Blue to Green gradient */
+    border: 2px solid #0056b3;
+    //color: white;
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.game-message {
+
+    margin-top: 20px;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #28a745;
+}
+
+/* Specific snake/ladder visual representations will be drawn by JS
+   These CSS classes will be applied to the cells where a snake head/tail or ladder start/end is.
+   For actual snake/ladder "lines" you would need SVG or Canvas, which is more complex.
+   For simplicity, we'll just style the cells involved.
+*/
+.snake-head {
+    //background-color: #dc3545; /* Red */
+    position: relative;
+}
+.snake-tail {
+    //background-color: #ffc107; /* Orange */
+    position: relative;
+}
+.ladder-start {
+    //background-color: #28a745; /* Green */
+
+    position: relative;
+}
+.ladder-end {
+    //background-color: #17a2b8; /* Teal */
+    position: relative;
+}
